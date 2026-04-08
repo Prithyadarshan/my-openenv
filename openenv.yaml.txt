@@ -1,0 +1,10 @@
+name: email_triage_env
+description: Email triage environment for OpenEnv
+version: 1.0
+
+tasks:
+  - spam_detection
+  - meeting_schedule
+  - complaint_handling
+
+reward_range: [0.0, 1.0]
