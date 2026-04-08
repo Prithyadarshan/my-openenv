@@ -1,46 +1,44 @@
-Email Triage OpenEnv
+Project Overview
 
-Simulates real-world email handling tasks (spam detection, meeting scheduling, complaint handling) using Python and OpenEnv.
+This project simulates real-world email handling tasks using Python and OpenEnv. It classifies incoming emails, generates appropriate replies, decides whether to archive them, and computes task-based rewards for AI agents. The environment is designed for testing and deploying AI email triage solutions.
 
-Functional Requirements
-Classify emails: spam / normal / urgent
-Generate appropriate reply
-Decide whether to archive email
-Track steps & compute reward
-Reset & reuse environment
-Project Structure
-openenv-email-agent/
-├── env/
-│   ├── environment.py
-│   ├── models.py
-│   ├── tasks.py
-│   └── grader.py
-├── inference.py
-├── openenv.yaml
-├── Dockerfile
-├── requirements.txt
-├── README.md
-└── scripts/
-    └── validate-submission.sh
-Classes & Files
-EmailEnv – reset, step, state, close
-Models – Observation, Action, StepResult
-Grader – computes rewards
-Tasks – predefined email tasks
-Inference – runs tasks using HF/OpenAI model
-Run
+Objectives
+* Classify emails as spam, normal, or urgent.
+* Generate automated replies based on email content.
+* Determine whether emails should be archived.
+* Evaluate actions using reward metrics for AI agent training.
+* Provide a reusable environment for AI experimentation and Hugging Face deployment.
 
-Locally:
+Key Features
+* Predefined email tasks: spam detection, meeting scheduling, complaint handling.
+* Step-based environment with reset and reward computation.
+* Modular design with separate files for environment, tasks, models, and grading.
+* Supports AI model inference using Hugging Face/OpenAI APIs.
+* Validation script to ensure compliance with OpenEnv standards.
 
-pip install -r requirements.txt
-python inference.py
+Technology Stack
+* Python (asyncio, Pydantic)
+* OpenEnv framework
+* Hugging Face API / OpenAI API
+* Docker for containerized deployment
+* CSV (optional for storing task results)
 
-Docker:
+Dataset Description
+* Tasks are predefined within tasks.py for simulation purposes.
+* Includes email text, sender info, subject, and expected actions.
+* Actions evaluated against labels (classification, reply, archive) for reward computation.
+* No external datasets required; fully self-contained environment.
 
-docker build -t email-env .
-docker run email-env
+Expected Outcomes
+* Accurate classification of emails based on content.
+* Automated and contextually appropriate replies.
+* Computation of reward metrics for AI evaluation.
+* Reusable, modular environment suitable for AI training and benchmarking.
+* Deployment-ready solution for Hugging Face Spaces.
 
-Validation:
-
-chmod +x scripts/validate-submission.sh
-./scripts/validate-submission.sh https://your-space-name.hf.space
+Future Enhancements
+* Integration with live email services for real-time testing.
+* Expand tasks to include multi-step workflows or multi-agent simulations.
+* Advanced reply generation using larger language models.
+* Dashboard for monitoring performance and rewards.
+* Support for multi-user email inbox simulations.
